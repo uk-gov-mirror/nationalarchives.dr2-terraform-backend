@@ -28,6 +28,7 @@
         "rolesanywhere:*",
         "route53:*",
         "route53resolver:*",
+        "scheduler:*",
         "securityhub:*",
         "ses:*",
         "s3:*",
