@@ -11,7 +11,7 @@ locals {
     "dr2-mgmt"
   ]
   dr2_terraform_repositories = [
-    { name : "dr2-ingest", branch = "*" }
+    { name : "dr2-ingest@770892421", branch = "*" }
   ]
   dr2_terraform_github_environments = [
     "intg",
@@ -20,9 +20,9 @@ locals {
     "sbox",
     "mgmt"
   ]
-  dr2_code_deploy_repositories  = [{ name : "dr2-ingest" }]
+  dr2_code_deploy_repositories  = [{ name : "dr2-ingest@770892421" }]
   dr2_code_deploy_environments  = ["intg", "staging", "prod"]
-  dr2_image_deploy_repositories = [{ name : "dr2-custodial-copy" }]
+  dr2_image_deploy_repositories = [{ name : "dr2-custodial-copy@754853041" }]
   environments_roles = {
     intg    = module.environment_roles_intg.terraform_role_arn
     staging = module.environment_roles_staging.terraform_role_arn
@@ -385,8 +385,8 @@ module "library_put_events_role" {
   assume_role_policy = templatefile("${path.module}/templates/iam_role/github_assume_role.json.tpl", {
     account_id = data.aws_caller_identity.current.account_id,
     repo_filters = jsonencode([
-      "repo:nationalarchives/da-aws-clients:ref:refs/heads/main",
-      "repo:nationalarchives/dr2-preservica-client:ref:refs/heads/main"
+      "repo:nationalarchives/da-aws-clients@641821052:ref:refs/heads/main",
+      "repo:nationalarchives/dr2-preservica-client@632653323:ref:refs/heads/main"
     ])
   })
   name = "mgmt-library-put-events-role"
